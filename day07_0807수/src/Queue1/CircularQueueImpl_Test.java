@@ -70,7 +70,7 @@ class IntCircularQueue {
 
 	void enQueue(int item) {
 		resize();
-		size++;
+		
 		rear = (rear + 1) % queue.length;
 		queue[rear] = item;
 	}
