@@ -1,4 +1,4 @@
-package 미생물_격리;
+package A_TEST.SWEA_미생물_격리;
 
 import java.util.ArrayList;
 import java.util.List;
