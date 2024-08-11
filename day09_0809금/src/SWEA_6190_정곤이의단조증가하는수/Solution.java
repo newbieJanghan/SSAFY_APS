@@ -38,7 +38,7 @@ public class Solution {
 			int int1 = Character.getNumericValue(string.charAt(i));
 			int int2 = Character.getNumericValue(string.charAt(i + 1));
 
-			if (int1 >= int2)
+			if (int1 > int2)
 				return false;
 
 		}
