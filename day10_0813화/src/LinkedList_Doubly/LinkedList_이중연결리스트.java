@@ -1,21 +1,25 @@
-package singly;
+package LinkedList_Doubly;
 
 class Node {
 	String data;
-	Node link;
+	Node prev;
+	Node next;
 
 	Node(String data) {
 		this.data = data;
 	}
 }
 
-class SinglyLinkedList {
+class DoublyLinkedList {
 	Node head;
+	Node tail;
 	int size;
 
-	SinglyLinkedList() {
+	DoublyLinkedList() {
 		this.head = new Node(null);
-		this.size = 0;
+		this.tail = new Node(null);
+		head.next = tail;
+		tail.prev = head;
 	}
 
 	void addData(int i, String data) {
@@ -26,11 +30,14 @@ class SinglyLinkedList {
 		Node newNode = new Node(data);
 		Node prev = head;
 		for (int j = 0; j < i; j++) {
-			prev = prev.link;
+			prev = prev.next;
 		}
 
-		newNode.link = prev.link;
-		prev.link = newNode;
+		newNode.prev = prev;
+		newNode.next = prev.next;
+
+		prev.next.prev = newNode;
+		prev.next = newNode;
 
 		size++;
 	}
@@ -42,16 +49,17 @@ class SinglyLinkedList {
 
 		Node prev = head;
 		for (int j = 0; j < i; j++) {
-			prev = prev.link;
+			prev = prev.next;
 		}
 
-		prev.link = prev.link.link;
+		prev.next = prev.next.next;
+		prev.next.prev = prev;
 
 		size--;
 	}
 
 }
 
-public class LinkedList_단순연결리스트 {
+public class LinkedList_이중연결리스트 {
 
 }
