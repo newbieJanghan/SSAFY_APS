@@ -10,8 +10,8 @@ public class SWEA_21885_신입사원_분반_교육 {
 		for (int t = 1; t <= T; t++) {
 			int[] constraints = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 			int studentCnt = constraints[0];
-			int min = constraints[1];
-			int max = constraints[2];
+			int MIN = constraints[1];
+			int MAX = constraints[2];
 			int result = 1000;
 
 			int[] scores = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
@@ -28,7 +28,6 @@ public class SWEA_21885_신입사원_분반_교육 {
 			}
 
 			int highCnt = 0, lowCnt = 0, midCnt = 0;
-//			System.out.println("*** low div turn ***");
 			for (int score = lowDiv; score < highDiv; score++) {
 				if (scoreCnt[score] == 0) {
 					continue;
@@ -37,13 +36,13 @@ public class SWEA_21885_신입사원_분반_교육 {
 				highCnt = scoreCnt[highDiv];
 				lowCnt += scoreCnt[score];
 				midCnt = studentCnt - (highCnt + lowCnt);
-//				System.out.println("highCnt: " + highCnt);
-//				System.out.println("lowCnt: " + lowCnt);
-//				System.out.println("midCnt: " + midCnt);
+				
+				if (midCnt < MIN) {
+					break;
+				}
 
-				if (min <= lowCnt && lowCnt <= max && min <= midCnt && midCnt <= max && min <= highCnt
-						&& highCnt <= max) {
-					// 차이 최소 계산
+				if (MIN <= lowCnt && lowCnt <= MAX && MIN <= midCnt && midCnt <= MAX && MIN <= highCnt
+						&& highCnt <= MAX) {
 					int diff = Math.max(highCnt, Math.max(midCnt, lowCnt))
 							- Math.min(highCnt, Math.min(midCnt, lowCnt));
 					result = Math.min(result, diff);
@@ -53,7 +52,6 @@ public class SWEA_21885_신입사원_분반_교육 {
 			highCnt = 0;
 			lowCnt = 0;
 			midCnt = 0;
-//			System.out.println("*** high div turn ***");
 			for (int score = highDiv; score > lowDiv; score--) {
 				if (scoreCnt[score] == 0) {
 					continue;
@@ -62,13 +60,13 @@ public class SWEA_21885_신입사원_분반_교육 {
 				highCnt += scoreCnt[score];
 				lowCnt = scoreCnt[lowDiv];
 				midCnt = studentCnt - (highCnt + lowCnt);
-//				System.out.println("highCnt: " + highCnt);
-//				System.out.println("lowCnt: " + lowCnt);
-//				System.out.println("midCnt: " + midCnt);
+				
+				if (midCnt < MIN) {
+					break;
+				}
 
-				if (min <= lowCnt && lowCnt <= max && min <= midCnt && midCnt <= max && min <= highCnt
-						&& highCnt <= max) {
-					// 차이 최소 계산
+				if (MIN <= lowCnt && lowCnt <= MAX && MIN <= midCnt && midCnt <= MAX && MIN <= highCnt
+						&& highCnt <= MAX) {
 					int diff = Math.max(highCnt, Math.max(midCnt, lowCnt))
 							- Math.min(highCnt, Math.min(midCnt, lowCnt));
 					result = Math.min(result, diff);
