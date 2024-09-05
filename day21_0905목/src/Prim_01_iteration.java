@@ -27,8 +27,9 @@ public class Prim_01_iteration {
 
 		dist[0] = 0;
 		int ans = 0;
-		
-		for (int i = 0; i < V; i++) {
+
+		int round = 0;
+		while (round++ < V) {
 			// pick minimum edge from i
 			int min = INF;
 			int idx = -1;
@@ -47,8 +48,8 @@ public class Prim_01_iteration {
 			// update target vertex's edge weight to minimum value;
 			for (int j = 0; j < V; j++) {
 				if (!visited[j] && adjArr[idx][j] != 0 && dist[j] > adjArr[idx][j]) {
-					dist[j] = adjArr[i][j];
-					from[j] = i;
+					dist[j] = adjArr[idx][j];
+					from[j] = idx;
 				}
 			}
 		}
